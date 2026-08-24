@@ -145,32 +145,36 @@ source/target editors, auto-detect, before/after diff, copy/download/apply
 ### 3. Debug
 severity list → Fix with AI → diff → Re-analyze
 
-![Debug](assets/debug.png)
+![Debug](assets/Debug.png)
 
 ### 4. Optimize
 complexity chips and categorized changes
 
-![Optimize](assets/optimize.png)
+![Optimize](assets/Code%20Optimizer.png)
 
 ### 5. Explain
 collapsible walkthrough, concepts, edge cases
 
-![Explain](assets/explain.png)
+![Explain](assets/Explainer.png)
+![Explain](assets/Explainer%201.png)
 
 ### 6. Analyze
 score ring, weights, Improve with AI, re-analyzed before/after scores
 
-![Analyze](assets/analyze.png)
+![Analyze](assets/Code%20Analyzer.png)
+![Analyze](assets/Analyzer%201.png)
 
 ### 7. Tests
 framework dropdown and type badges (not coverage %)
 
-![Tests](assets/tests.png)
+![Tests](assets/Test%20Generator%20.png)
+![Tests](assets/Test%20Generator%201.png)
+![Tests](assets/Test%20Generator%202.png)
 
 ### 8. History
 filter, search, reopen, delete
 
-![History](assets/history.png)
+![History](assets/History.png)
 
 ## Future improvements
 
