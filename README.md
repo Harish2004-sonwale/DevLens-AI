@@ -17,8 +17,10 @@ DevLens AI helps developers convert, debug, optimize, explain, analyze, and gene
 - **Dashboard & History** — launch tools, review recent activity, reopen prior source in the matching editor
 
 ## Architecture
-![Uploading image.png…]()
 
+![DevLens AI Architecture](assets/architecture.png)
+
+History is stored in a local SQLite database (`database/devlens.db`). A legacy `codeforge.db` file in the same directory is also accepted for backward compatibility.
 
 ## Tech stack
 
