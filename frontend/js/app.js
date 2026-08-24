@@ -142,7 +142,12 @@ function renderBugList(data) {
         </div>
       </div>`;
   });
-  lastDebugIssues = (data.bugs || []).map((b) => `- [${b.severity}] ${b.issue}: ${b.explanation}`).join('\n');
+  lastDebugIssues = (data.bugs || []).map((b) => {
+    const line = b.line_number ? `Line ${b.line_number}` : 'General';
+    const rec = b.recommendation ? ` | Recommendation: ${b.recommendation}` : '';
+    const fix = b.suggested_fix ? ` | Suggested fix snippet: ${b.suggested_fix}` : '';
+    return `- [${b.severity.toUpperCase()} - ${line}] ${b.issue}: ${b.explanation}${rec}${fix}`;
+  }).join('\n');
 }
 
 function initDebug() {

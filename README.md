@@ -4,6 +4,10 @@
 
 *Understand. Improve. Transform. Test.*
 
+🌐 **Live Application:** [https://devlens-ai-vg00.onrender.com/](https://devlens-ai-vg00.onrender.com/)
+
+[![Live on Render](https://img.shields.io/badge/Live%20Demo-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://devlens-ai-vg00.onrender.com/)
+
 ![DevLens AI Overview](assets/overview.png)
 
 DevLens AI helps developers convert, debug, optimize, explain, analyze, and generate tests for source code. The browser UI talks only to a FastAPI backend. The backend is the only component that calls Google Gemini. The Gemini API key never leaves the server.
