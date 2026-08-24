@@ -7,6 +7,7 @@
 🌐 **Live Application:** [https://devlens-ai-vg00.onrender.com/](https://devlens-ai-vg00.onrender.com/)
 
 [![Live on Render](https://img.shields.io/badge/Live%20Demo-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://devlens-ai-vg00.onrender.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
 ![DevLens AI Overview](assets/overview.png)
 
@@ -188,5 +189,5 @@ filter, search, reopen, delete
 - CI Docker image if deployment needs it
 
 ## License
-
-Use and modify for portfolio and internal development as needed.
+ 
+This project is open-source and licensed under the [MIT License](LICENSE).
