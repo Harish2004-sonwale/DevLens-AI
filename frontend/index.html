@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevLens AI — AI-Powered Developer Intelligence Platform</title>
+  <meta name="description" content="DevLens AI: Understand. Improve. Transform. Test. Convert, debug, optimize, explain, analyze, and generate tests for source code." />
+  <link rel="stylesheet" href="/static/css/main.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◉</text></svg>" />
+
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="hsl(260,90%,65%)" />
+        <stop offset="100%" stop-color="hsl(200,100%,60%)" />
+      </linearGradient>
+    </defs>
+  </svg>
+</head>
+<body>
+
+<div id="app">
+
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a class="brand" href="#dashboard" data-nav="dashboard" aria-label="DevLens AI home">
+        <div class="brand-icon">◉</div>
+        <div class="brand-text">
+          <span class="brand-name">DevLens AI</span>
+          <span class="brand-tagline">Understand. Improve. Transform. Test.</span>
+        </div>
+      </a>
+
+      <div class="nav-tabs" role="tablist">
+        <button class="nav-tab active" role="tab" data-page="dashboard" id="tab-dashboard" aria-controls="page-dashboard" aria-selected="true">
+          <span class="tab-icon">🏠</span><span class="tab-text">Dashboard</span>
+        </button>
+        <button class="nav-tab" role="tab" data-page="convert" id="tab-convert" aria-controls="page-convert" aria-selected="false">
+          <span class="tab-icon">🔄</span><span class="tab-text">Convert</span>
+        </button>
+        <button class="nav-tab" role="tab" data-page="debug" id="tab-debug" aria-controls="page-debug" aria-selected="false">
+          <span class="tab-icon">🐛</span><span class="tab-text">Debug</span>
+        </button>
+        <button class="nav-tab" role="tab" data-page="optimize" id="tab-optimize" aria-controls="page-optimize" aria-selected="false">
+          <span class="tab-icon">⚡</span><span class="tab-text">Optimize</span>
+        </button>
+        <button class="nav-tab" role="tab" data-page="explain" id="tab-explain" aria-controls="page-explain" aria-selected="false">
+          <span class="tab-icon">💡</span><span class="tab-text">Explain</span>
+        </button>
+        <button class="nav-tab" role="tab" data-page="analyze" id="tab-analyze" aria-controls="page-analyze" aria-selected="false">
+          <span class="tab-icon">📊</span><span class="tab-text">Analyze</span>
+        </button>
+        <button class="nav-tab" role="tab" data-page="tests" id="tab-tests" aria-controls="page-tests" aria-selected="false">
+          <span class="tab-icon">🧪</span><span class="tab-text">Tests</span>
+        </button>
+        <button class="nav-tab" role="tab" data-page="history" id="tab-history" aria-controls="page-history" aria-selected="false">
+          <span class="tab-icon">📜</span><span class="tab-text">History</span>
+        </button>
+      </div>
+
+      <div class="api-status" aria-live="polite">
+        <div class="status-dot" id="status-dot"></div>
+        <span id="status-text">Checking…</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- DASHBOARD -->
+  <main class="page active" id="page-dashboard" role="tabpanel" aria-labelledby="tab-dashboard">
+    <div class="hero-card">
+      <div class="hero-text">
+        <span class="hero-tagline-badge">Understand. Improve. Transform. Test.</span>
+        <h1 class="gradient-text">DevLens AI</h1>
+        <p>AI-Powered Developer Intelligence Platform — convert, debug, optimize, explain, analyze, and test source code without leaving the editor.</p>
+      </div>
+      <div class="stats-row" id="dash-stats">
+        <div class="stat-chip"><span class="stat-val" id="dash-ops">0</span><span class="stat-label">Operations</span></div>
+        <div class="stat-chip"><span class="stat-val">6</span><span class="stat-label">Tools</span></div>
+      </div>
+    </div>
+
+    <div class="tool-grid">
+      <article class="tool-card" data-nav="convert">
+        <div class="tool-card-top">
+          <div class="tool-card-icon page-icon violet">🔄</div>
+          <span class="tool-card-arrow">→</span>
+        </div>
+        <h3>Convert</h3>
+        <p>Translate source between Python, Java, C/C++, JavaScript, TypeScript, C#, and Go.</p>
+      </article>
+      <article class="tool-card" data-nav="debug">
+        <div class="tool-card-top">
+          <div class="tool-card-icon page-icon red">🐛</div>
+          <span class="tool-card-arrow">→</span>
+        </div>
+        <h3>Debug</h3>
+        <p>Find bugs and vulnerabilities, then fix them with AI and re-analyze the result.</p>
+      </article>
+      <article class="tool-card" data-nav="optimize">
+        <div class="tool-card-top">
+          <div class="tool-card-icon page-icon orange">⚡</div>
+          <span class="tool-card-arrow">→</span>
+        </div>
+        <h3>Optimize</h3>
+        <p>Improve implementation, memory, and readability — with honest before/after complexity.</p>
+      </article>
+      <article class="tool-card" data-nav="explain">
+        <div class="tool-card-top">
+          <div class="tool-card-icon page-icon cyan">💡</div>
+          <span class="tool-card-arrow">→</span>
+        </div>
+        <h3>Explain</h3>
+        <p>Get structured walkthroughs, concepts, edge cases, and complexity notes.</p>
+      </article>
+      <article class="tool-card" data-nav="analyze">
+        <div class="tool-card-top">
+          <div class="tool-card-icon page-icon blue">📊</div>
+          <span class="tool-card-arrow">→</span>
+        </div>
+        <h3>Analyze</h3>
+        <p>Weighted quality scores across security, performance, readability, maintainability, and complexity.</p>
+      </article>
+      <article class="tool-card" data-nav="tests">
+        <div class="tool-card-top">
+          <div class="tool-card-icon page-icon green">🧪</div>
+          <span class="tool-card-arrow">→</span>
+        </div>
+        <h3>Test Generator</h3>
+        <p>Generate framework-specific tests classified as normal, edge, exception, security, and regression.</p>
+      </article>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Recent Activity</div>
+      <div class="activity-feed" id="dash-activity">
+        <div class="empty-state">
+          <div class="empty-icon">📜</div>
+          <p class="empty-text">No activity yet. Run a tool to populate history.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- CONVERT -->
+  <main class="page" id="page-convert" role="tabpanel" aria-labelledby="tab-convert">
+    <header class="page-header">
+      <div class="page-icon violet">🔄</div>
+      <div class="page-header-text">
+        <h1 class="gradient-text">Code Translator</h1>
+        <p>Translate source code between supported languages while preserving logic and idioms.</p>
+      </div>
+    </header>
+
+    <div class="alert" id="convert-alert" hidden></div>
+
+    <div class="card">
+      <div class="controls-row">
+        <div class="select-wrap">
+          <select id="sel-src-lang" aria-label="Source language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="csharp">C#</option>
+            <option value="go">Go</option>
+          </select>
+        </div>
+        <button class="swap-btn" id="btn-swap-langs" title="Swap languages" aria-label="Swap source and target languages">⇄</button>
+        <div class="select-wrap">
+          <select id="sel-tgt-lang" aria-label="Target language">
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="typescript">TypeScript</option>
+            <option value="csharp">C#</option>
+            <option value="go">Go</option>
+          </select>
+        </div>
+        <label class="checkbox-wrap" for="cb-preserve-comments">
+          <input type="checkbox" id="cb-preserve-comments" checked />
+          Preserve comments
+        </label>
+        <button class="btn btn-secondary btn-sm" id="btn-auto-detect">
+          <span class="spinner"></span>
+          <span class="btn-label">Auto-detect</span>
+        </button>
+        <button class="btn btn-ghost btn-sm" id="btn-convert-reset" type="button">Clear</button>
+        <button class="btn btn-primary" id="btn-convert" style="margin-left:auto">
+          <span class="spinner"></span>
+          <span class="btn-label">Convert Code</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="workspace">
+      <div class="editor-pane">
+        <div class="editor-header">
+          <div class="editor-dots"><span></span><span></span><span></span></div>
+          <span class="editor-label">Source Code</span>
+        </div>
+        <textarea class="code-editor" id="src-code" placeholder="Paste source code…" spellcheck="false"></textarea>
+      </div>
+      <div class="editor-pane">
+        <div class="editor-header">
+          <div class="editor-dots"><span></span><span></span><span></span></div>
+          <span class="editor-label">Translated Code</span>
+          <div class="editor-actions">
+            <button class="copy-btn" id="btn-copy-converted">Copy</button>
+            <button class="btn btn-ghost btn-sm" id="btn-dl-converted">Download</button>
+          </div>
+        </div>
+        <div style="position:relative;flex:1;display:flex;flex-direction:column;">
+          <div class="output-placeholder" id="convert-placeholder" style="display:flex">
+            <span class="ph-icon">🔄</span>
+            <p>Translated code will appear here</p>
+          </div>
+          <pre class="output-area" id="converted-code" style="display:none;flex:1"></pre>
+        </div>
+      </div>
+    </div>
+
+    <div id="convert-diff"></div>
+
+    <div class="result-section" id="convert-result">
+      <div class="card">
+        <div class="card-title">Translation Summary</div>
+        <div class="meta-grid">
+          <div>
+            <div class="muted-label">Explanation</div>
+            <p id="convert-explanation"></p>
+          </div>
+          <div id="convert-warnings-sec" style="display:none">
+            <div class="muted-label">Warnings</div>
+            <ul id="convert-warnings" class="plain-list"></ul>
+          </div>
+          <div class="stats-row">
+            <div class="stat-chip"><span class="stat-val" id="convert-quality">—</span><span class="stat-label">Quality</span></div>
+            <div class="stat-chip"><span class="stat-val" id="convert-time">—</span><span class="stat-label">Time</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- DEBUG -->
+  <main class="page" id="page-debug" role="tabpanel" aria-labelledby="tab-debug">
+    <header class="page-header">
+      <div class="page-icon red">🐛</div>
+      <div class="page-header-text">
+        <h2>Bug Detector</h2>
+        <p>Identify issues by severity, then generate a full fix and re-analyze.</p>
+      </div>
+    </header>
+    <div class="alert" id="debug-alert" hidden></div>
+    <div class="card">
+      <div class="controls-row">
+        <div class="select-wrap">
+          <select id="sel-dbg-lang" aria-label="Language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="csharp">C#</option>
+            <option value="go">Go</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-dbg-detect"><span class="spinner"></span><span class="btn-label">Auto-detect</span></button>
+        <button class="btn btn-ghost btn-sm" id="btn-debug-reset" type="button">Clear</button>
+        <button class="btn btn-primary" id="btn-debug" style="margin-left:auto"><span class="spinner"></span><span class="btn-label">Find Bugs</span></button>
+      </div>
+    </div>
+    <div class="editor-pane" style="min-height:300px">
+      <div class="editor-header">
+        <div class="editor-dots"><span></span><span></span><span></span></div>
+        <span class="editor-label">Source Code</span>
+      </div>
+      <textarea class="code-editor" id="dbg-code" placeholder="Paste code to find bugs…" spellcheck="false" style="min-height:280px"></textarea>
+    </div>
+    <div class="result-section" id="debug-result">
+      <div class="card">
+        <div class="card-title">Analysis Summary</div>
+        <div class="stats-row">
+          <div class="stat-chip"><span class="stat-val" id="dbg-total">0</span><span class="stat-label">Total</span></div>
+          <div class="stat-chip"><span class="stat-val" id="dbg-critical" style="color:var(--sev-critical)">0</span><span class="stat-label">Critical</span></div>
+          <div class="stat-chip"><span class="stat-val" id="dbg-high">0</span><span class="stat-label">High</span></div>
+          <div class="stat-chip"><span class="stat-val" id="dbg-medium">0</span><span class="stat-label">Medium</span></div>
+          <div class="stat-chip"><span class="stat-val" id="dbg-low">0</span><span class="stat-label">Low</span></div>
+        </div>
+        <div class="summary-box" id="dbg-summary" style="margin-top:14px"></div>
+        <div class="controls-row" style="margin-top:16px" id="debug-fix-actions" hidden>
+          <button class="btn btn-fix" id="btn-debug-fix"><span class="spinner"></span><span class="btn-label">Fix All Issues with AI</span></button>
+          <button class="btn btn-secondary" id="btn-debug-reanalyze" hidden><span class="spinner"></span><span class="btn-label">Re-analyze Fixed Code</span></button>
+        </div>
+      </div>
+      <div id="debug-diff"></div>
+      <div class="card">
+        <div class="card-title">Issues Found</div>
+        <div class="bug-list" id="bug-list">
+          <div class="empty-state"><div class="empty-icon">✅</div><p class="empty-text">Run a debug scan to see results.</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- OPTIMIZE -->
+  <main class="page" id="page-optimize" role="tabpanel" aria-labelledby="tab-optimize">
+    <header class="page-header">
+      <div class="page-icon orange">⚡</div>
+      <div class="page-header-text">
+        <h2>Code Optimizer</h2>
+        <p>Improve performance, readability, and memory without changing behavior.</p>
+      </div>
+    </header>
+    <div class="alert" id="optimize-alert" hidden></div>
+    <div class="card">
+      <div class="controls-row">
+        <div class="select-wrap">
+          <select id="sel-opt-lang" aria-label="Language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="csharp">C#</option>
+            <option value="go">Go</option>
+          </select>
+        </div>
+        <div class="select-wrap">
+          <select id="sel-opt-focus" aria-label="Optimization focus">
+            <option value="balanced">Balanced</option>
+            <option value="performance">Performance</option>
+            <option value="readability">Readability</option>
+            <option value="memory">Memory</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-opt-detect"><span class="spinner"></span><span class="btn-label">Auto-detect</span></button>
+        <button class="btn btn-ghost btn-sm" id="btn-opt-reset" type="button">Clear</button>
+        <button class="btn btn-primary" id="btn-optimize" style="margin-left:auto"><span class="spinner"></span><span class="btn-label">Optimize</span></button>
+      </div>
+    </div>
+    <div class="workspace">
+      <div class="editor-pane">
+        <div class="editor-header">
+          <div class="editor-dots"><span></span><span></span><span></span></div>
+          <span class="editor-label">Original Code</span>
+        </div>
+        <textarea class="code-editor" id="opt-code" placeholder="Paste code to optimize…" spellcheck="false"></textarea>
+      </div>
+      <div class="editor-pane">
+        <div class="editor-header">
+          <div class="editor-dots"><span></span><span></span><span></span></div>
+          <span class="editor-label">Optimized Code</span>
+          <div class="editor-actions">
+            <button class="copy-btn" id="btn-copy-optimized">Copy</button>
+            <button class="btn btn-ghost btn-sm" id="btn-dl-optimized">Download</button>
+          </div>
+        </div>
+        <div style="position:relative;flex:1;display:flex;flex-direction:column;">
+          <div class="output-placeholder" id="opt-placeholder" style="display:flex">
+            <span class="ph-icon">⚡</span>
+            <p>Optimized code will appear here</p>
+          </div>
+          <pre class="output-area" id="optimized-code" style="display:none;flex:1"></pre>
+        </div>
+      </div>
+    </div>
+    <div id="optimize-diff"></div>
+    <div class="result-section" id="optimize-result">
+      <div class="complexity-box">
+        <div class="complexity-chip">
+          <span class="complexity-chip-label">Time before → after</span>
+          <span class="complexity-chip-val" id="opt-time-cmp">—</span>
+        </div>
+        <div class="complexity-chip">
+          <span class="complexity-chip-label">Space before → after</span>
+          <span class="complexity-chip-val" id="opt-space-cmp">—</span>
+        </div>
+        <p id="opt-complexity-summary" style="flex:1;margin:0"></p>
+      </div>
+      <div class="card">
+        <div class="card-title">Optimization Changes</div>
+        <div class="change-list" id="change-list"></div>
+      </div>
+      <div class="explain-grid">
+        <div class="info-block"><h4>Performance Notes</h4><p id="opt-perf-notes">—</p></div>
+        <div class="info-block"><h4>Readability Notes</h4><p id="opt-read-notes">—</p></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- EXPLAIN -->
+  <main class="page" id="page-explain" role="tabpanel" aria-labelledby="tab-explain">
+    <header class="page-header">
+      <div class="page-icon cyan">💡</div>
+      <div class="page-header-text">
+        <h2>Code Explainer</h2>
+        <p>Structured explanations with walkthroughs, concepts, and edge cases.</p>
+      </div>
+    </header>
+    <div class="alert" id="explain-alert" hidden></div>
+    <div class="card">
+      <div class="controls-row">
+        <div class="select-wrap">
+          <select id="sel-expl-lang" aria-label="Language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="csharp">C#</option>
+            <option value="go">Go</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-expl-detect"><span class="spinner"></span><span class="btn-label">Auto-detect</span></button>
+        <button class="btn btn-ghost btn-sm" id="btn-expl-reset" type="button">Clear</button>
+        <button class="btn btn-primary" id="btn-explain" style="margin-left:auto"><span class="spinner"></span><span class="btn-label">Explain Code</span></button>
+      </div>
+    </div>
+    <div class="editor-pane" style="min-height:280px">
+      <div class="editor-header">
+        <div class="editor-dots"><span></span><span></span><span></span></div>
+        <span class="editor-label">Code to Explain</span>
+      </div>
+      <textarea class="code-editor" id="expl-code" placeholder="Paste any code…" spellcheck="false" style="min-height:260px"></textarea>
+    </div>
+    <div class="result-section" id="explain-result">
+      <div class="overview-card" id="expl-overview"></div>
+      <div class="card">
+        <div class="card-title">Detailed Explanation</div>
+        <p id="expl-detail" class="prose"></p>
+      </div>
+      <div class="explain-grid">
+        <div class="info-block"><h4>Functions &amp; Classes</h4><ul id="expl-functions"></ul></div>
+        <div class="info-block"><h4>Important Variables</h4><ul id="expl-vars"></ul></div>
+        <div class="info-block"><h4>Algorithm</h4><p id="expl-algo"></p></div>
+        <div class="info-block">
+          <h4>Complexity</h4>
+          <div class="stats-row" style="margin-top:6px">
+            <div><div class="muted-label">Time</div><span class="complexity-badge" id="expl-time">—</span></div>
+            <div><div class="muted-label">Space</div><span class="complexity-badge" id="expl-space">—</span></div>
+          </div>
+        </div>
+        <div class="info-block"><h4>Potential Issues</h4><ul id="expl-issues"></ul></div>
+      </div>
+      <details class="collapse-card" open>
+        <summary>Example Walkthrough</summary>
+        <p id="expl-walkthrough" class="prose"></p>
+      </details>
+      <details class="collapse-card">
+        <summary>Concepts Used</summary>
+        <ul id="expl-concepts"></ul>
+      </details>
+      <details class="collapse-card">
+        <summary>Edge Cases</summary>
+        <ul id="expl-edges"></ul>
+      </details>
+    </div>
+  </main>
+
+  <!-- ANALYZE -->
+  <main class="page" id="page-analyze" role="tabpanel" aria-labelledby="tab-analyze">
+    <header class="page-header">
+      <div class="page-icon violet">📊</div>
+      <div class="page-header-text">
+        <h2>Code Analyzer</h2>
+        <p>AI-generated dimensional scores combined with a deterministic weighted overall score.</p>
+      </div>
+    </header>
+    <div class="alert" id="analyze-alert" hidden></div>
+    <div class="card">
+      <div class="controls-row">
+        <div class="select-wrap">
+          <select id="sel-anlz-lang" aria-label="Language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="csharp">C#</option>
+            <option value="go">Go</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-anlz-detect"><span class="spinner"></span><span class="btn-label">Auto-detect</span></button>
+        <button class="btn btn-ghost btn-sm" id="btn-anlz-reset" type="button">Clear</button>
+        <button class="btn btn-primary" id="btn-analyze" style="margin-left:auto"><span class="spinner"></span><span class="btn-label">Analyze Quality</span></button>
+      </div>
+    </div>
+    <div class="editor-pane" style="min-height:280px">
+      <div class="editor-header">
+        <div class="editor-dots"><span></span><span></span><span></span></div>
+        <span class="editor-label">Code to Analyze</span>
+      </div>
+      <textarea class="code-editor" id="anlz-code" placeholder="Paste code for a quality report…" spellcheck="false" style="min-height:260px"></textarea>
+    </div>
+    <div class="result-section" id="analyze-result">
+      <div class="card">
+        <div class="card-title">Quality Score</div>
+        <span class="score-badge-model" id="anlz-model">AI-generated analysis · Deterministic weighted overall</span>
+        <div class="score-ring-wrap">
+          <div class="score-ring">
+            <svg viewBox="0 0 100 100">
+              <circle class="ring-track" cx="50" cy="50" r="45"/>
+              <circle class="ring-fill"  cx="50" cy="50" r="45"/>
+            </svg>
+            <div class="score-ring-number">
+              <span class="score-val">0</span>
+              <small>/100</small>
+            </div>
+          </div>
+          <div class="quality-bars" id="quality-bars"></div>
+        </div>
+        <div class="summary-box" id="anlz-summary" style="margin-top:20px"></div>
+        <div class="controls-row" style="margin-top:16px">
+          <button class="btn btn-fix" id="btn-analyze-improve"><span class="spinner"></span><span class="btn-label">Improve Code with AI</span></button>
+        </div>
+      </div>
+      <div id="analyze-diff"></div>
+      <div class="card" id="analyze-reanalyze-card" hidden>
+        <div class="card-title">Re-analyzed Score</div>
+        <p class="muted-label">This score is measured by sending the improved code back through the analyzer. It is not estimated.</p>
+        <div class="stats-row">
+          <div class="stat-chip"><span class="stat-val" id="anlz-before">—</span><span class="stat-label">Before</span></div>
+          <div class="stat-chip"><span class="stat-val" id="anlz-after">—</span><span class="stat-label">After (re-analyzed)</span></div>
+        </div>
+        <div class="summary-box" id="anlz-after-summary" style="margin-top:12px"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Recommendations</div>
+        <div class="recs-list" id="anlz-recs"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- TESTS -->
+  <main class="page" id="page-tests" role="tabpanel" aria-labelledby="tab-tests">
+    <header class="page-header">
+      <div class="page-icon green">🧪</div>
+      <div class="page-header-text">
+        <h2>Test Generator</h2>
+        <p>Generate runnable tests with framework selection. Coverage percentages are not claimed.</p>
+      </div>
+    </header>
+    <div class="alert" id="tests-alert" hidden></div>
+    <div class="card">
+      <div class="controls-row">
+        <div class="select-wrap">
+          <select id="sel-test-lang" aria-label="Language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="csharp">C#</option>
+            <option value="go">Go</option>
+          </select>
+        </div>
+        <div class="select-wrap">
+          <select id="sel-test-fw" aria-label="Test framework"></select>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-test-detect"><span class="spinner"></span><span class="btn-label">Auto-detect</span></button>
+        <button class="btn btn-ghost btn-sm" id="btn-test-reset" type="button">Clear</button>
+        <button class="btn btn-primary" id="btn-gen-tests" style="margin-left:auto"><span class="spinner"></span><span class="btn-label">Generate Tests</span></button>
+      </div>
+    </div>
+    <div class="editor-pane" style="min-height:280px">
+      <div class="editor-header">
+        <div class="editor-dots"><span></span><span></span><span></span></div>
+        <span class="editor-label">Source Code</span>
+      </div>
+      <textarea class="code-editor" id="test-code" placeholder="Paste code to generate tests…" spellcheck="false" style="min-height:260px"></textarea>
+    </div>
+    <div class="result-section" id="tests-result">
+      <div class="card">
+        <div class="card-title">Test Suite</div>
+        <div class="stats-row" style="margin-bottom:16px">
+          <div class="stat-chip"><span class="stat-val" id="test-framework">—</span><span class="stat-label">Framework</span></div>
+          <div class="stat-chip"><span class="stat-val" id="test-total">0</span><span class="stat-label">Total</span></div>
+          <span class="test-badge normal" id="badge-normal">Normal 0</span>
+          <span class="test-badge edge" id="badge-edge">Edge 0</span>
+          <span class="test-badge exception" id="badge-exception">Exception 0</span>
+          <span class="test-badge security" id="badge-security">Security 0</span>
+          <span class="test-badge regression" id="badge-regression">Regression 0</span>
+        </div>
+        <div class="editor-pane">
+          <div class="editor-header">
+            <div class="editor-dots"><span></span><span></span><span></span></div>
+            <span class="editor-label">Full Test File</span>
+            <div class="editor-actions">
+              <button class="copy-btn" id="btn-copy-tests">Copy</button>
+              <button class="btn btn-ghost btn-sm" id="btn-dl-tests">Download</button>
+            </div>
+          </div>
+          <pre class="output-area" id="full-test-out" style="min-height:200px;background:var(--bg-surface)"></pre>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Individual Test Cases</div>
+        <div class="test-list" id="test-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- HISTORY -->
+  <main class="page" id="page-history" role="tabpanel" aria-labelledby="tab-history">
+    <header class="page-header">
+      <div class="page-icon blue">📜</div>
+      <div class="page-header-text">
+        <h2>History</h2>
+        <p>Past operations. Reopen an item to restore source code in the matching tool.</p>
+      </div>
+    </header>
+    <div class="alert" id="history-alert" hidden></div>
+    <div class="card">
+      <div class="controls-row">
+        <input class="search-input" id="history-search" type="search" placeholder="Search operations…" aria-label="Search history" />
+        <div class="select-wrap">
+          <select id="history-filter" aria-label="Filter by tool">
+            <option value="all">All tools</option>
+            <option value="translate">Convert</option>
+            <option value="debug">Debug</option>
+            <option value="debug_fix">Debug Fix</option>
+            <option value="optimize">Optimize</option>
+            <option value="explain">Explain</option>
+            <option value="analyze">Analyze</option>
+            <option value="analyze_improve">Improve</option>
+            <option value="generate_tests">Tests</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-history-refresh">Refresh</button>
+        <button class="btn btn-danger btn-sm" id="btn-history-clear" style="margin-left:auto">Clear All</button>
+      </div>
+    </div>
+    <div class="history-table-wrap">
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tool</th>
+            <th>Languages</th>
+            <th>Status</th>
+            <th>Score</th>
+            <th>When</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="history-body">
+          <tr><td colspan="7"><div class="empty-state"><p class="empty-text">No history yet.</p></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>DevLens AI</span>
+    <span class="dot">·</span>
+    <span>AI-Powered Developer Intelligence Platform</span>
+    <span class="dot">·</span>
+    <span>Understand. Improve. Transform. Test.</span>
+  </footer>
+</div>
+
+<div id="toast-container" aria-live="assertive" aria-atomic="true"></div>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/ui.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
