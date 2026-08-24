@@ -132,14 +132,45 @@ Gemini is mocked in API tests. Tests use a temporary SQLite file (`DEVLENS_DB_PA
 
 ## Screenshots / feature guide
 
-1. **Dashboard** — six tool cards and recent activity
-2. **Convert** — source/target editors, auto-detect, before/after diff, copy/download/apply
-3. **Debug** — severity list → Fix with AI → diff → Re-analyze
-4. **Optimize** — complexity chips and categorized changes
-5. **Explain** — collapsible walkthrough, concepts, edge cases
-6. **Analyze** — score ring, weights, Improve with AI, re-analyzed before/after scores
-7. **Tests** — framework dropdown and type badges (not coverage %)
-8. **History** — filter, search, reopen, delete
+### 1. Dashboard
+six tool cards and recent activity
+
+![Dashboard](assets/dashboard.png)
+
+### 2. Convert
+source/target editors, auto-detect, before/after diff, copy/download/apply
+
+![Convert](assets/convert.png)
+
+### 3. Debug
+severity list → Fix with AI → diff → Re-analyze
+
+![Debug](assets/debug.png)
+
+### 4. Optimize
+complexity chips and categorized changes
+
+![Optimize](assets/optimize.png)
+
+### 5. Explain
+collapsible walkthrough, concepts, edge cases
+
+![Explain](assets/explain.png)
+
+### 6. Analyze
+score ring, weights, Improve with AI, re-analyzed before/after scores
+
+![Analyze](assets/analyze.png)
+
+### 7. Tests
+framework dropdown and type badges (not coverage %)
+
+![Tests](assets/tests.png)
+
+### 8. History
+filter, search, reopen, delete
+
+![History](assets/history.png)
 
 ## Future improvements
 
