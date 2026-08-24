@@ -4,6 +4,8 @@
 
 *Understand. Improve. Transform. Test.*
 
+![DevLens AI Overview](assets/overview.png)
+
 DevLens AI helps developers convert, debug, optimize, explain, analyze, and generate tests for source code. The browser UI talks only to a FastAPI backend. The backend is the only component that calls Google Gemini. The Gemini API key never leaves the server.
 
 ## Features
